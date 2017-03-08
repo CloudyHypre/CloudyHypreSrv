@@ -1,4 +1,4 @@
-#make
+#make cloudy_server
 
 #vars
 
@@ -25,11 +25,11 @@ CLIENTFLAGS = -DIS_SERVER=0 -DIS_CLIENT=1
 
 .PHONY: all clean
 
-all: hypre
+all: cloudy_server
 
 #executables
 
-hypre: $(OBJ_MODS)/termflag.o $(OBJ_MODS)/mainsocket.o $(OBJ_MODS)/inputpayload.o $(OBJ_MODS)/inputcommand.o $(OBJ_MODS)/nextperiodic.o $(OBJ_MODS)/sockettime.o $(OBJ_MODS)/readlist.o $(OBJ_MODS)/socketlist.o $(OBJ_MODS)/disconnectfunction.o $(OBJ_MODS)/connectfunction.o $(OBJ_MODS)/command.o $(OBJ_MODS)/periodic.o $(OBJ_MODS)/network.o $(OBJ_MODS)/log.o $(OBJ_MODS)/component.o $(OBJ_MODS)/main_server.o $(HYPREOBJ)/server.o | $(HYPREBIN)
+cloudy_server: $(OBJ_MODS)/termflag.o $(OBJ_MODS)/mainsocket.o $(OBJ_MODS)/inputpayload.o $(OBJ_MODS)/inputcommand.o $(OBJ_MODS)/nextperiodic.o $(OBJ_MODS)/sockettime.o $(OBJ_MODS)/readlist.o $(OBJ_MODS)/socketlist.o $(OBJ_MODS)/disconnectfunction.o $(OBJ_MODS)/connectfunction.o $(OBJ_MODS)/command.o $(OBJ_MODS)/periodic.o $(OBJ_MODS)/network.o $(OBJ_MODS)/log.o $(OBJ_MODS)/component.o $(OBJ_MODS)/main_server.o $(HYPREOBJ)/server.o | $(HYPREBIN)
 	$(CC) $(CFLAGSHYPRE) -o $(HYPREBIN)/$@ $^
 	
 #objects
@@ -66,6 +66,5 @@ $(HYPREOBJ):
 #phony
 	
 clean:
-	rm -rf $(OBJ)
 	rm -rf $(HYPREBIN)
 	rm -rf $(HYPREOBJ)

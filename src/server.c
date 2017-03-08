@@ -5,6 +5,7 @@
 
 // Required header for custom functions. Do not remove.
 #include "modules/component.h"
+#include <stdio.h>
 
 // Copy and paste the function templates below to start creating your
 // custom functions.
@@ -36,6 +37,12 @@ COMMAND_FUNCTION(function_name) {
 
 ***********************************************************************/
 
+CONNECT_FUNCTION(print_new_connection) {
+	(void)socket;
+	
+	printf("New socket connection: %i\n", socket);
+}
+
 /*
  * The server_init() function is executed when the server starts. This
  * function should be used to load all your custom functions. Further,
@@ -51,5 +58,7 @@ void server_init(void) {
 	// set_disconnect_function(&function_name);
 	// add_periodic_function(&function_name);
 	// add_command_function("cmnd", &function_name);
+    
+    set_connect_function(&print_new_connection);
 
 }
